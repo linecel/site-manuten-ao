@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acompanhamento de Manutenção</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+        }
+        main {
+            margin: 20px auto;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 4px;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px 0;
+            background: #f1f1f1;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Acompanhamento de Manutenção</h1>
+    </header>
+    <main>
+        <h2>Consulte o status do seu aparelho</h2>
+        <form id="statusForm">
+            <label for="codigo">Digite o código do pedido:</label>
+            <input type="text" id="codigo" name="codigo" placeholder="Exemplo: 12345-ABCD" required>
+            <button type="submit">Consultar</button>
+        </form>
+        <div id="resultado" class="status" style="display: none;">
+            O status do seu aparelho é: <span id="status"></span>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 - Assistência Técnica</p>
+    </footer>
+
+    <script>
+        document.getElementById('statusForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const codigo = document.getElementById('codigo').value;
+
+            // Simulação de consulta de status (em um caso real, isso viria de um servidor)
+            const statusMock = {
+                '16794571609': 'Aguardando aprovação',
+                '67890-EFGH': 'Em manutenção',
+                '11223-IJKL': 'Pronto para retirada',
+                '44556-MNOP': 'Sem reparo possível'
+            };
+
+            const status = statusMock[codigo] || 'Código não encontrado';
+            document.getElementById('status').textContent = status;
+            document.getElementById('resultado').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
